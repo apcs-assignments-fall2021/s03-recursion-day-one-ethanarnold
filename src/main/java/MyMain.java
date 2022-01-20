@@ -23,8 +23,18 @@ public class MyMain {
     // arithmeticSequence(4) => 9
     // arithmeticSequence(1) => 3
     public static int arithmeticSequence(int n) {
-        // YOUR CODE HERE
-        return -1;
+        // Base case
+        if(n == 1) {
+            return 3;
+        }
+
+        // Recursive call
+        else {
+            int subproblem = arithmeticSequence(n - 1);
+            System.out.print(subproblem + " ");
+            int answer = 2 + subproblem;
+            return answer;
+        }
     }
 
     // Write a method that uses recursion to count the number
@@ -38,13 +48,16 @@ public class MyMain {
     // Hint: to make the subproblem smaller, make the String shorter!
     // Hint 2: multiple recursive cases might be helpful!
     public static int countX(String str) {
-        // YOUR CODE HERE
-        return -1;
+        // Base case
+        if(str.length() == 0) return 0;
+
+            // Recursive call
+        else {
+            int subproblem = countX(str.substring(1));
+            if(str.charAt(0) == 'x') return 1 + subproblem;
+            else return subproblem;
+        }
     }
-
-
-
-
 
     // Methods for homework:
     // Write a method that calculate the exponents, given a base
@@ -54,8 +67,15 @@ public class MyMain {
     // exponent(5, 2) = 5 * 5 = 25
     // exponent(4, 0) = 1
     public static int exponent(int base, int power) {
-        // YOUR CODE HERE
-        return -1;
+        // Base case
+        if(power == 0) {
+            return 1;
+        }
+
+        else {
+            int subproblem = exponent(base, power - 1);
+            return base * subproblem;
+        }
     }
 
     // Write a method that uses recursion to count the number
@@ -64,13 +84,20 @@ public class MyMain {
     // countHi("hix") => 1
     // countHi("hellohihi") => 2
     public static int countHi(String str) {
-        // YOUR CODE HERE
-        return -1;
+        // Base case
+        if(str.length() == 1) return 0;
+
+            // Recursive call
+        else {
+            int subproblem = countHi(str.substring(1));
+            if(str.substring(0, 2).equals("hi")) return 1 + subproblem;
+            else return subproblem;
+        }
     }
 
 
     public static void main(String[] args) {
-        // Optional: Write some code here to test your methods!
-        System.out.println(factorial(5));
+        System.out.println("\n" + arithmeticSequence(10));
+        //System.out.println(factorial(5));
     }
 }
